@@ -1,11 +1,3 @@
-
-/**
- * Describe class (Step 7) Example3D here.
- *
- * Time-stamp: <2019-01-31 15:42:46 rlc3> edited by rlc 
- *
- */
-
 import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
 
@@ -19,12 +11,17 @@ import javax.swing.JFrame;
 import com.sun.j3d.utils.geometry.ColorCube;
 import com.sun.j3d.utils.geometry.Box;
 
+/**
+ * Main class for java 3d universe for co2016 cw4.
+ */
 public class Example3D extends JFrame
 {
 
+	/**
+	 * Method to create the scene graph.
+	 */
 	public BranchGroup createSceneGraph()
 	{
-
 		// creating the bounds of the universe
 		// see mouse behaviour below
 		// API: The scheduling region defines a spatial volume
@@ -141,9 +138,12 @@ public class Example3D extends JFrame
 		return objRoot;
 	}
 
-	// create a "standard" universe using SimpleUniverse
+	/**
+	 * create a "standard" universe using SimpleUniverse
+	 */
 	public Example3D()
 	{
+		// *** create universe using BranchGroup from createSceneGraph()
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
@@ -153,9 +153,6 @@ public class Example3D extends JFrame
 		SimpleUniverse u = new SimpleUniverse(c);
 		u.getViewingPlatform().setNominalViewingTransform();
 		u.addBranchGraph(scene);
-
-		//increase the max render distance beyond 10m, we're dealing with cosmic scales now.
-		u.getViewer().getView().setBackClipDistance(100);
 		
 		// *** create a viewing platform
 		TransformGroup cameraTG = u.getViewingPlatform().getViewPlatformTransform();
@@ -166,7 +163,11 @@ public class Example3D extends JFrame
 		translate.set(0.0f, 0.0f, 10.0f);
 		T3D.setTranslation(translate);
 		cameraTG.setTransform(T3D);
-		setTitle("Step 7: two rotation interpolators");
+		//increase the max render distance beyond 10m, we're dealing with cosmic scales now. Well not really, but it is bigger.
+		u.getViewer().getView().setBackClipDistance(100);
+		
+		// *** window properties
+		setTitle("Hello, 3D world!");
 		setSize(700, 700);
 		setVisible(true);
 	}
@@ -174,7 +175,7 @@ public class Example3D extends JFrame
 	public static void main(String[] args)
 	{
 
-		Example3D step7 = new Example3D();
+		Example3D app = new Example3D();
 
 	}
 
