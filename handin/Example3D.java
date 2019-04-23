@@ -1350,4 +1350,3 @@ class ToggleSwitchOnCollision extends Behavior
 	}
 
 }
-
